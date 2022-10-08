@@ -1,6 +1,5 @@
 # Самый длинный фильм
-# Теперь нам нужно узнать, какой самый длинный
-# фильм среди тех, которые были сняты в 2019 году.
+# Теперь нам нужно узнать, какой самый длинный фильм среди тех, которые были сняты в 2019 году.
 # Выводим название и его длительность.
 #
 # Пример результата:
@@ -26,14 +25,19 @@ import sqlite3
 
 con = sqlite3.connect("../netflix.db")
 cur = con.cursor()
-sqlite_query = ("")  # TODO измените код запроса
+sqlite_query = """SELECT title, MAX(duration)
+FROM netflix
+WHERE release_year = 2019
+"""
+
+# TODO измените код запроса
 cur.execute(sqlite_query)
 executed_query = cur.fetchall()
 
 # TODO Результат запроса сохраните в переменной result
 # для последующей выдачи в требуемом формате
 
-result = ""
+result = executed_query
 
 if __name__ == '__main__':
     print(result)

@@ -1,6 +1,5 @@
 # Без повторов
-# Запросите список всех режиссеров, которые
-# находятся в этой базе.
+# Запросите список всех режиссеров, которые находятся в этой базе.
 # Режиссеры должны быть представлены без повторов
 #
 # Пример результата:
@@ -32,19 +31,23 @@
 # description — краткое описание
 # -----------------------
 import sqlite3
+
 import prettytable
 
-con = sqlite3.connect("../netflix.db")
-cur = con.cursor()
-sqlite_query = ("")  # TODO измените код запроса
-result = cur.execute(sqlite_query)
+with sqlite3.connect("../netflix.db") as con:
+    cur = con.cursor()
+    sqlite_query = """SELECT DISTINCT director 
+                      FROM netflix"""
+    # TODO измените код запроса
+    result = cur.execute(sqlite_query)
 
-# не удаляйте код дальше, он нужен для вывода результата
-# запроса в красивом формате
+
+
+#не удаляйте код дальше, он нужен для вывода результата запроса в красивом формате
 
 mytable = prettytable.from_db_cursor(result)
 mytable.max_width = 30
 
 
 if __name__ == '__main__':
-    print(mytable)
+   print(mytable)

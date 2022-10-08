@@ -34,8 +34,7 @@ cur = con.cursor()
 sqlite_query = ("")  # TODO измените код запроса
 result = cur.execute(sqlite_query)
 
-# не удаляйте код дальше, он нужен для вывода результата
-# запроса в красивом формате
+# не удаляйте код дальше, он нужен для вывода результата запроса в красивом формате
 
 mytable = prettytable.from_db_cursor(result)
 mytable.max_width = 30

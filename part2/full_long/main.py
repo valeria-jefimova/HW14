@@ -29,10 +29,15 @@ import sqlite3
 
 con = sqlite3.connect("../netflix.db")
 cur = con.cursor()
-sqlite_query = ("")  # TODO измените код запроса
+sqlite_query = """SELECT director, SUM(duration_type)
+FROM netflix
+WHERE director LIKE '%Alastair Fothergill%'
+GROUP BY duration_type
+"""
+# TODO измените код запроса
 cur.execute(sqlite_query)
 executed_query = cur.fetchall()
-result = ""
+result = executed_query
 # TODO Результат запроса сохраните в переменной result
 # для последующей выдачи в требуемом формате
 con.close()
